@@ -20,3 +20,19 @@ func NewClientCache(cacheType constant.CacheType, addr string) *ClientCache {
 	}
 	return clientCache
 }
+
+func (cc *ClientCache) Conn() error {
+	return cc.client.Conn()
+}
+
+func (cc *ClientCache) Write(key interfaces.CacheKey, value []byte) (err error) {
+	return cc.client.Write(key, value)
+}
+
+func (cc *ClientCache) Read(key interfaces.CacheKey) (value []byte, err error) {
+	return cc.client.Read(key)
+}
+
+func (cc *ClientCache) Close() error {
+	return cc.client.Close()
+}

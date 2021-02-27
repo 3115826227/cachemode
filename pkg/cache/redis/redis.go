@@ -32,3 +32,7 @@ func (rc *ClientRedis) Write(key interfaces.CacheKey, value []byte) (err error) 
 func (rc *ClientRedis) Read(key interfaces.CacheKey) (value []byte, err error) {
 	return
 }
+
+func (rc *ClientRedis) Close() error {
+	return rc.conn.Close()
+}
